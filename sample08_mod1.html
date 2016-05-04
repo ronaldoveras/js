@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body role="application">
+<style>
+.last
+{
+background: #900;
+}
+</style>
+<a id="link1">Link1</a>
+<a id="link2">Link2</a>
+<a id="link3">Link3</a>
+
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+</script>
+
+<script> (function ($) {
+$('#link2').text("Jquery").attr('href', 'http://www.jquery.com');
+$('a:last').text("google").attr('href', 'http://www.google.com');
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
