@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<dom-module id="icon-toggle">
+
+
+  <template>
+
+    <style>
+      /* local styles go here */
+      :host {
+        display: inline-block;
+      }
+      iron-icon {
+        fill: rgba(0,0,0,0);
+        stroke: currentcolor;
+      }
+      :host([pressed]) iron-icon {
+        fill: currentcolor;
+      }
+    </style>
+
+    <!-- local DOM goes here -->
+    <!-- local DOM goes here -->
+    <iron-icon icon="[[toggleIcon]]">
+    </iron-icon>
+    <span>"[[count]]"</span>
+  </template>
+
+  <script>
+  Polymer({
+    is: 'icon-toggle',
+    properties: {
+      toggleIcon: String,
+      count: {
+     	 type: Number,
+    	 notify: true,
+         value: 0,
+         reflectToAttribute: true
+      },
+      pressed: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
+      }
+    },
+    listeners: {
+      'tap': 'toggle'
+    },
+    toggle: function(e) {
+      console.info('Novo click contabilizado.');
+      this.pressed = !this.pressed;
+      this.count = this.count + 1;
+      console.info(this.count);
+    },
+  });
+  </script>
+
+</dom-module>
+
