@@ -24,7 +24,6 @@
     <!-- local DOM goes here -->
     <iron-icon icon="[[toggleIcon]]">
     </iron-icon>
-    <span>"[[count]]"</span>
   </template>
 
   <script>
