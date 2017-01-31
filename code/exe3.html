@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+                <script type="text/javascript">
+                   var qtdClicks = 0;
+                   function incrementar(){
+                       qtdClicks = qtdClicks + 1;
+                       document.getElementById('myDiv').innerHTML='O botão foi clicado: ' + qtdClicks + ' vezes'; 
+                   }
+                   function decrementar(){
+                       qtdClicks = qtdClicks -1;
+                       document.getElementById('myDiv').innerHTML='O botão foi clicado: ' + qtdClicks + ' vezes'; 
+                   }
+
+                </script>
+    </head>    
+    <body>
+        <div id="myDiv"></div>
+        <input type="button" onclick="incrementar();" value="Incrementar"/>
+        <input type="button" onclick="decrementar();" value="Decrementar"/>
+    </body>    
+</html>

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+                <script type="text/javascript">
+                   function validar(){
+                       document.getElementById('message').innerHTML='';
+                       var campo = '';
+                       var conteudo = document.getElementById('nome').value;
+                       console.log(conteudo);
+                       if(conteudo.length > 3){
+                             document.getElementById('message').innerHTML=conteudo; 
+                       } else {
+                            document.getElementById('message').innerHTML='Prossiga..';
+                       }
+                   }
+                </script>
+    </head>    
+    <body>
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <span id="message"></span>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input id="nome" type="text" placeholder="Fulano de tal"/></td>
+                </tr>
+                <tr>
+                    <td>            
+                        <input type="button" onclick="validar();" value="Validar"/>
+                    </td>                    
+                </tr>    
+            </table>
+            
+        </div>
+    </body>    
+</html>

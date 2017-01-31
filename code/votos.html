@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+                <script type="text/javascript">
+                   function contarVotos(){
+                       document.getElementById('message').innerHTML='';
+                       var brancos = Number.parseFloat(document.getElementById('brancos').value);
+                       var nulos = Number.parseFloat(document.getElementById('nulos').value);
+                       var validos = Number.parseFloat(document.getElementById('validos').value);
+                       if(Number.isNaN(brancos) || Number.isNaN(nulos) || Number.isNaN(validos)){
+                          document.getElementById('message').innerHTML = 'Não é um número';
+                          return;
+                       }
+                       var total = brancos + nulos + validos;
+                       
+                       document.getElementById('message').innerHTML='Brancos ' + (brancos/total)*100 + '%, ' + 'Nulos ' + (nulos/total)*100 + '%, ' + 'Válidos ' + (validos/total)*100 + '%'; 
+                   }
+                </script>
+    </head>    
+    <body>
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <span id="message"></span>
+                <tr>
+                    <td>Votos Brancos:</td>
+                    <td><input id="brancos" type="number" placeholder="0" /></td>
+                </tr>
+                <tr>
+                    <td>Votos Nulos:</td>
+                    <td><input id="nulos" type="number" placeholder="0"/></td>
+                </tr>
+                <tr>
+                    <td>Votos Válidos:</td>
+                    <td><input id="validos" type="number" placeholder="0"/></td>
+                </tr>
+
+                <tr>
+                    <td>            
+                        <input type="button" onclick="contarVotos();" value="Contar"/>
+                    </td>                    
+                </tr>    
+            </table>
+            
+        </div>
+    </body>    
+</html>

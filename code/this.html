@@ -1,0 +1,15 @@
+<html><head>
+  <script type="text/javascript">
+    function validarIdade(obj, minimo, maximo) {
+      if (obj.value < minimo || obj.value > maximo)
+        document.getElementById('meuDiv').innerHTML = 'Idade inválida';
+      else
+        document.getElementById('meuDiv').innerHTML = '';
+    }
+  </script>
+</head>
+<body>
+  <input type="text" onkeyup="validarIdade(this, 18, 100);" />
+  <div id="meuDiv"></div>
+</body>
+</html>

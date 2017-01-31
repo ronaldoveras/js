@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+                <script type="text/javascript">
+                   function validar(){
+                       document.getElementById('message').innerHTML='';
+                       var campo = '';
+                       if(document.getElementById('nome').value === ''){
+                           campo += ' Nome ';
+                       }
+                       if(document.getElementById('fone').value === ''){
+                           campo += ' Telefone ';
+                       }
+                       if(campo !== ''){
+                           document.getElementById('message').innerHTML='Valor dos campo(s): ' + campo + 'deve(m) ser informado (s)'; 
+                       }
+                   }
+                </script>
+    </head>    
+    <body>
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <span id="message"></span>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input id="nome" type="text" placeholder="Fulano de tal"/></td>
+                </tr>
+                <tr>
+                    <td>Telefone:</td>
+                    <td><input id="fone" type="tel" /></td>
+                </tr>
+                <tr>
+                    <td>            
+                        <input type="button" onclick="validar();" value="Validar"/>
+                    </td>                    
+                </tr>    
+            </table>
+            
+        </div>
+    </body>    
+</html>

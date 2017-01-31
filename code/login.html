@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <script type="text/javascript" src="login.js"></script> 
+  <script type="text/javascript"> 
+    function get(name) { 
+      return document.getElementById(name); 
+    } 
+
+    function logar() { 
+      var email = get('email').value; 
+      var senha = get('senha').value; 
+
+      try { 
+        validarUsuario(email, senha); 
+        get('msg').style = 'color: blue;' 
+        get('msg').innerHTML = 'Usuário autenticado com sucesso!'; 
+      } catch (error) { 
+        get('msg').style = 'color: red;' 
+        get('msg').innerHTML = error.message; 
+      } 
+    } 
+  </script> 
+</head> 
+<body> 
+  <span>Login</span><br> 
+  <input id="email" type="text" value="" style="width: 150px;" placeholder="email" /><br> 
+  <input id="senha" type="password" value="" style="width: 150px;" placeholder="senha" /><br> 
+  <button onclick="logar()">Logar</button><br> 
+  <span id="msg"></span> 
+  </body> 
+</html> 

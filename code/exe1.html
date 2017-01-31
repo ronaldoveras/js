@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+                <script type="text/javascript">
+                   var qtdClicks = 0;
+                   function contarClicks(){
+                       qtdClicks = qtdClicks + 1;
+                       document.getElementById('myDiv').innerHTML='O botão foi clicado: ' + qtdClicks + ' vezes'; 
+                   }
+                </script>
+    </head>    
+    <body>
+        <div id="myDiv"></div>
+        <input type="button" onclick="contarClicks();" value="Click"/>
+    </body>    
+</html>

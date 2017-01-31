@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <script type="text/javascript">
+            var array = [];
+            function calcular(){
+                var idade = document.getElementById("idade").value;
+                var sexo = document.getElementById("sexo").value;
+                var experiencia = document.getElementById("experiencia").value;
+                var candidato = {
+                    "idade": idade,
+                    "sexo": sexo,
+                    "experiencia": experiencia
+                }
+                array.push(candidato);
+
+                var qtdCandidatos = 0;
+                var qtdCandidatas = 0;
+                var somaIdade = 0;
+                var qtdHomensExperiencia = 0;
+                var qtdHomensMaior45 = 0;
+                var qtdMulheresMenos35 = 0;
+                var menorIdade = 100;
+                for(var item of array){
+                    if(Number.parseInt(item["sexo"]) === 1){
+                        qtdCandidatos += 1;
+                        if(Number.parseInt(item["experiencia"]) === 1){
+                            somaIdade += Number.parseInt(item["idade"]);
+                            qtdHomensExperiencia += 1;
+                        }
+                        if(Number.parseInt(item["idade"]) > 45){
+                            qtdHomensMaior45 += 1;
+                        }
+                    }else if(Number.parseInt(item["sexo"]) === 2){
+                        qtdCandidatas += 1;
+                        if(Number.parseInt(item["experiencia"]) === 1 ){
+                            if(Number.parseInt(item["idade"]) < 35){
+                                qtdMulheresMenos35 += 1;
+                            }
+                            if(Number.parseInt(item["idade"]) < menorIdade){
+                                menorIdade = Number.parseInt(item["idade"]);
+                            }
+                        }
+                    }
+                }
+                document.getElementById("qtdCandidatos").innerHTML = qtdCandidatos;
+                document.getElementById("qtdCandidatas").innerHTML = qtdCandidatas;
+                document.getElementById("media").innerHTML = somaIdade/qtdHomensExperiencia;
+                document.getElementById("percentual").innerHTML = (qtdHomensMaior45/qtdCandidatos)*100 + ' %' ;
+                document.getElementById("qtdMulheresMenos35").innerHTML = qtdMulheresMenos35;
+                document.getElementById("menorIdade").innerHTML = menorIdade;
+
+            }
+        </script>        
+    </head>    
+    <body>
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <td>
+                        <span>Idade:</span>
+                    </td>    
+                    <td>            
+                        <input type="number" id="idade" />
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>Sexo:</td>
+                    <td>
+                        <select id="sexo">
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                        </select>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>Experiência anterior:</td>
+                    <td>
+                        <select id="experiencia">
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>    
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>            
+                        <input type="button" onclick="calcular();" value="Calcular"/>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                        Candidatos:
+                    </td>    
+                    <td>           
+                        <span id="qtdCandidatos"></span>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                         Candidatas:
+                    </td>   
+                    <td>           
+                        <span id="qtdCandidatas"></span>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                         Média de idade dos homens com experiência:
+                    </td>   
+                    <td>           
+                        <span id="media"></span>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                         Percentagem dos homens com mais de 45 anos:
+                    </td>   
+                    <td>           
+                        <span id="percentual"></span>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                         Quantidade de mulheres com idade inferior a 35 anos e com experiência:
+                    </td>   
+                    <td>           
+                        <span id="qtdMulheresMenos35"></span>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>
+                         Menor idade entre as mulheres que já tem experiência no serviço:
+                    </td>   
+                    <td>           
+                        <span id="menorIdade"></span>
+                    </td>                    
+                </tr>    
+
+            </table>
+            
+        </div>
+    </body>    
+</html>

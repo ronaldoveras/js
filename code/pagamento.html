@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <script type="text/javascript">
+            var array = [];
+            var inc = 0;
+            const map ={
+                "1":'Carne',
+                "2":'Peixe',
+                "3":'Feijão',
+                "4":'Arroz',
+                "5":'Legumes'
+            };
+            function calcular(){
+                var produtoSelecionado = document.getElementById("produtos").value;
+                var quantidade = document.getElementById("quantidade").value;
+                var formaPgto = document.getElementById("forma").value;
+                var valorCalculado = Number.parseFloat(produtoSelecionado)*Number.parseInt(quantidade);
+                var valorDesconto = formaPgto == 1? valorCalculado*0.9:valorCalculado*0.95; 
+
+                var frete = document.getElementById("regiao").value;
+                var tipoFrete = document.getElementById("tipoFrete").value;
+
+                var valorFinal = valorDesconto + Number.parseFloat(frete) + Number.parseFloat(frete)*Number.parseFloat(tipoFrete);
+                var pedido = {
+                    "produto": produtoSelecionado,
+                    "quantidade": quantidade,
+                    "valorFinal": valorFinal
+                }
+                array.push(pedido);
+                var pedidos = document.getElementById("pedidos");
+                while(pedidos.rows.length > 0){
+                        console.log('Removendo linha!');
+                        pedidos.deleteRow(0);
+                }
+                document.getElementById("resultado").value = valorFinal;
+                for(var item of array){
+                    
+                    var row = pedidos.insertRow(-1);
+                    var cel1 = row.insertCell(0);
+                    var cel2 = row.insertCell(1);
+                    var cel3 = row.insertCell(2);
+                    
+                    cel1.innerHTML = map[item['produto']];
+                    cel2.innerHTML = item['quantidade'];
+                    cel3.innerHTML = item['valorFinal'];
+                    //inc++;
+                }
+            }
+        </script>        
+    </head>    
+    <body>
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <td>Produtos:</td>
+                    <td>
+                        <select id="produtos">
+                            <option value="1">Carne</option>
+                            <option value="2">Peixe</option>
+                            <option value="3">Feijão</option>
+                            <option value="4">Arroz</option>
+                            <option value="5">Legumes</option>        
+                        </select>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Quantidade:</span>
+                    </td>    
+                    <td>            
+                        <input type="number" id="quantidade" />
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>Forma de Pagamento:</td>
+                    <td>
+                        <select id="forma">
+                            <option value="1">Boleto (10%)</option>
+                            <option value="2">Cartão (5%)</option>
+                        </select>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>Frete:</td>
+                    <td>
+                        <select id="regiao">
+                            <option value="50">Norte</option>
+                            <option value="45">Nordeste</option>
+                            <option value="35">Sul</option>
+                            <option value="50">Sudeste</option>
+                            <option value="55">Centro-oeste</option>
+
+                        </select>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tipo de Frete:</td>
+                    <td>
+                        <select id="tipoFrete">
+                            <option value="0.05">PAC</option>
+                            <option value="0.15">SEDEX</option>
+                        </select>    
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>            
+                        <input type="button" onclick="calcular();" value="Calcular"/>
+                    </td>                    
+                </tr>    
+                <tr>
+                    <td>            
+                        <input type="text" id="resultado" readonly/>
+                    </td>                    
+                </tr>    
+
+            </table>
+            <table id="pedidos">
+            </table>                
+        </div>
+    </body>    
+</html>

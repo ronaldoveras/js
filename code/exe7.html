@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <script type="text/javascript"> 
+    function get(name) { 
+      return document.getElementById(name); 
+    } 
+
+    function processar() { 
+      var seq = get('seq').value; 
+      var array = seq.split(',');
+      var textoDiv = '';
+      var soma = 0;
+      for(var item of array){
+        soma += Number.parseInt(item);  
+        if(item < 1 || item > 100){
+            get('msg').style = 'color: red;'; 
+            get('msg').innerHTML = item + ' está fora do limite 1-100'; 
+        }else{
+            textoDiv += ' ' + item;
+            get('msg').innerHTML = textoDiv;
+        }
+      }
+      array.soma = soma;
+      get('soma').value = array.soma;
+      get('maiores50').innerHTML = array.filter(item => item > 50).join('*');
+      get('raizQuadrada').innerHTML = array.map(item => Math.sqrt(item).toFixed(2)).join('/');
+    } 
+  </script> 
+</head> 
+<body> 
+  <span>Sequencia:</span><br> 
+  <input id="seq" type="text" value="" style="width: 150px;" placeholder="1,2,3,4,5,6,7" /><br> 
+  <button onclick="processar()">Processar</button><br> 
+  <span id="msg"></span><br>
+  <input id="soma" readonly /> 
+  <div id="maiores50"></div>
+  <div id="raizQuadrada"></div>
+  </body> 
+</html> 
